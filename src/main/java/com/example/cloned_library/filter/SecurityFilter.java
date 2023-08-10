@@ -37,7 +37,7 @@ public class SecurityFilter implements Filter {
         }
         return false;
     };
-    private static final Predicate<String> isAdminPages = (uri) -> uri.startsWith("/admin");
+    private static final Predicate<String> isAdminPages = (uri) -> uri.contains("/admin");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
@@ -46,9 +46,7 @@ public class SecurityFilter implements Filter {
         String requestURI = request.getRequestURI();
         req.setAttribute("requestURI", requestURI);
         System.out.println("requestURI = " + requestURI);
-        if (checkForRememberMe(request)) {
-            chain.doFilter(request, response);
-        } else {
+        checkForRememberMe(request);
             if (!isOpen.test(requestURI)) {
                 HttpSession session = request.getSession();
                 Object id = session.getAttribute("id");
@@ -65,7 +63,6 @@ public class SecurityFilter implements Filter {
             } else {
                 chain.doFilter(request, response);
             }
-        }
     }
 
     private boolean checkForRememberMe(HttpServletRequest request) {

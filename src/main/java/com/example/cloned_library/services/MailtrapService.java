@@ -40,17 +40,12 @@ public class MailtrapService {
                     <head>
                         <meta charset="UTF-8">
                         <title>Activation Page</title>
-                        <style>
-                            body {
-                                background-color: darkorange;
-                            }
-                        </style>
                     </head>
-                    <body>
-                    <h1>Welcome To Bla Bla</h1>
+                    <body style="background-color: cadetblue">
+                    <h1>Welcome To Activation of Account</h1>
                     <h2>In order to activate your account click here 👇</h2>
                     <div>
-                        <a href="http://localhost:8080/activation?token=%s" target="_blank">activate</a>
+                        <a style="margin: 0 auto" href="http://localhost:8080/activation?token=%s" target="_blank">Activate</a>
                     </div>
                     </body>
                     </html>

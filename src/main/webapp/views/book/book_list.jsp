@@ -34,12 +34,14 @@
                         mb
                     </th>
                     <th>
-                        <a href="/admin/book/delete/${book.getId()}" class="btn btn-danger">
-                            DELETE BOOK
-                        </a>||
-                        <a href="/admin/book/update/${book.getId()}" class="btn btn-warning">
-                            UPDATE BOOK
-                        </a>
+                        <c:if test="${session.getAttribute('role').equals('ADMIN')}">
+                            <a href="/admin/book/delete/${book.getId()}" class="btn btn-danger">
+                                DELETE BOOK
+                            </a>||
+                            <a href="/admin/book/update/${book.getId()}" class="btn btn-warning">
+                                UPDATE BOOK
+                            </a>
+                        </c:if>
                     </th>
                 </tr>
             </c:forEach>
